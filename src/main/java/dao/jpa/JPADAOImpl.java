@@ -29,19 +29,23 @@ public class JPADAOImpl implements DAO {
 
     @Override
     public List<TuristickiObjektEntity> dohvatiSveObjekte(String oib) {
-        return JPAEMProvider.getEntityManager().createNamedQuery("PruzateljUsluga.dohvatiObjekte", TuristickiObjektEntity.class)
+        return JPAEMProvider.getEntityManager()
+                .createNamedQuery("PruzateljUsluga.dohvatiObjekte", TuristickiObjektEntity.class)
                 .setParameter("oib", oib)
                 .getResultList();
     }
 
     @Override
     public TuristickiObjektEntity dohvatiTuristickiObjekt(long sifraObjekt) {
-        return null;
+        return JPAEMProvider.getEntityManager().find(TuristickiObjektEntity.class, sifraObjekt);
     }
 
     @Override
     public List<GostEntity> dohvatiGoste(long sifraObjekt) {
-        return null;
+        return JPAEMProvider.getEntityManager()
+                .createNamedQuery("TuristickiObjekt.dohvatiGoste", GostEntity.class)
+                .setParameter("sobj", sifraObjekt)
+                .getResultList();
     }
 //    @Override
 //    public void postMovie(Movie movie) throws DAOException {
