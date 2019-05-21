@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+        version="2.0">
+
+    <entity class="model.DrzavnaInstitucijaEntity">
+        <table name="DrzavnaInstitucija" schema="public" catalog="suts"/>
+        <attributes>
+            <id name="sifraInstitucija">
+                <column name="sifraInstitucija" precision="-1"/>
+            </id>
+            <basic name="naziv">
+                <column name="naziv"/>
+            </basic>
+        </attributes>
+    </entity>
+    <entity class="model.DrzavniDuznosnikEntity">
+        <table name="DrzavniDuznosnik" schema="public" catalog="suts"/>
+        <attributes>
+            <id name="sifraDuznosnik">
+                <column name="sifraDuznosnik" precision="-1"/>
+            </id>
+            <basic name="ime">
+                <column name="ime"/>
+            </basic>
+            <basic name="prezime">
+                <column name="prezime"/>
+            </basic>
+            <basic name="sifraInstitucija">
+                <column name="sifraInstitucija" precision="-1"/>
+            </basic>
+        </attributes>
+    </entity>
+    <entity class="model.FizickaOsobaEntity">
+        <table name="FizickaOsoba" schema="public" catalog="suts"/>
+        <attributes>
+            <id name="oib">
+                <column name="oib"/>
+            </id>
+            <basic name="ime">
+                <column name="ime"/>
+            </basic>
+            <basic name="prezime">
+                <column name="prezime"/>
+            </basic>
+            <basic name="datumRodjenja">
+                <column name="datumRodjenja" precision="-1"/>
+            </basic>
+        </attributes>
+    </entity>
+    <entity class="model.GostEntity">
+        <table name="Gost" schema="public" catalog="suts"/>
+        <attributes>
+            <id name="sifraGost">
+                <column name="sifraGost" precision="-1"/>
+            </id>
+            <basic name="sifraObjekt">
+                <column name="sifraObjekt" precision="-1"/>
+            </basic>
+        </attributes>
+    </entity>
+    <entity class="model.OvjeraRegistracijaObjektEntity">
+        <table name="OvjeraRegistracijaObjekt" schema="public" catalog="suts"/>
+        <id-class class="model.OvjeraRegistracijaObjektEntityPK"/>
+        <attributes>
+            <id name="sifraRegistracija">
+                <column name="sifraRegistracija" precision="-1"/>
+            </id>
+            <id name="sifraDuznosnik">
+                <column name="sifraDuznosnik" precision="-1"/>
+            </id>
+            <basic name="status">
+                <column name="status" precision="-1"/>
+            </basic>
+        </attributes>
+    </entity>
+    <entity class="model.OvjeraRegistracijaPruzateljEntity">
+        <table name="OvjeraRegistracijaPruzatelj" schema="public" catalog="suts"/>
+        <id-class class="model.OvjeraRegistracijaPruzateljEntityPK"/>
+        <attributes>
+            <id name="sifraRegistracija">
+                <column name="sifraRegistracija" precision="-1"/>
+            </id>
+            <id name="sifraDuznosnik">
+                <column name="sifraDuznosnik" precision="-1"/>
+            </id>
+            <basic name="status">
+                <column name="status" precision="-1"/>
+            </basic>
+        </attributes>
+    </entity>
+    <entity class="model.PravnaOsobaEntity">
+        <table name="PravnaOsoba" schema="public" catalog="suts"/>
+        <attributes>
+            <id name="oib">
+                <column name="oib"/>
+            </id>
+            <basic name="naziv">
+                <column name="naziv"/>
+            </basic>
+            <basic name="datumOsnivanja">
+                <column name="datumOsnivanja" precision="-1"/>
+            </basic>
+            <basic name="pocetniKapital">
+                <column name="pocetniKapital" precision="-1"/>
+            </basic>
+        </attributes>
+    </entity>
+    <entity class="model.PruzateljUslugaEntity">
+        <table name="PruzateljUsluga" schema="public" catalog="suts"/>
+        <attributes>
+            <id name="oib">
+                <column name="oib"/>
+            </id>
+            <basic name="adresa">
+                <column name="adresa"/>
+            </basic>
+        </attributes>
+    </entity>
+    <entity class="model.RegistracijaObjektEntity">
+        <table name="RegistracijaObjekt" schema="public" catalog="suts"/>
+        <attributes>
+            <id name="sifraRegistracija">
+                <column name="sifraRegistracija" precision="-1"/>
+            </id>
+            <basic name="sifraObjekt">
+                <column name="sifraObjekt" precision="-1"/>
+            </basic>
+            <basic name="datumPredaje">
+                <column name="datumPredaje" precision="-1"/>
+            </basic>
+        </attributes>
+    </entity>
+    <entity class="model.RegistracijaPruzateljEntity">
+        <table name="RegistracijaPruzatelj" schema="public" catalog="suts"/>
+        <attributes>
+            <id name="sifraRegistracija">
+                <column name="sifraRegistracija" precision="-1"/>
+            </id>
+            <basic name="oib">
+                <column name="oib"/>
+            </basic>
+        </attributes>
+    </entity>
+    <entity class="model.TuristickiObjektEntity">
+        <table name="TuristickiObjekt" schema="public" catalog="suts"/>
+        <attributes>
+            <id name="sifraObjekt">
+                <column name="sifraObjekt" precision="-1"/>
+            </id>
+            <basic name="oib">
+                <column name="oib"/>
+            </basic>
+            <basic name="naziv">
+                <column name="naziv"/>
+            </basic>
+            <basic name="sifraVrsta">
+                <column name="sifraVrsta" precision="-1"/>
+            </basic>
+        </attributes>
+    </entity>
+    <entity class="model.VrstaObjektEntity">
+        <table name="VrstaObjekt" schema="public" catalog="suts"/>
+        <attributes>
+            <id name="sifraVrsta">
+                <column name="sifraVrsta" precision="-1"/>
+            </id>
+            <basic name="nazivVrsta">
+                <column name="nazivVrsta"/>
+            </basic>
+        </attributes>
+    </entity>
+</entity-mappings>
