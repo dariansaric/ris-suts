@@ -1,9 +1,12 @@
 package model.objects;
 
+import model.Repository;
+import model.entity.PruzateljUslugaEntity;
+
 import java.util.Objects;
 
 
-public class PruzateljUsluga {
+public class PruzateljUsluga implements Repository<PruzateljUslugaEntity> {
     private String oib;
     private String adresa;
 
@@ -33,6 +36,7 @@ public class PruzateljUsluga {
         this.adresa = adresa;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -45,5 +49,20 @@ public class PruzateljUsluga {
     @Override
     public int hashCode() {
         return Objects.hash(oib, adresa);
+    }
+
+    @Override
+    public PruzateljUslugaEntity convertToEntity() {
+        PruzateljUslugaEntity e = new PruzateljUslugaEntity();
+        e.setOib(oib);
+        e.setAdresa(adresa);
+
+        return e;
+    }
+
+    @Override
+    public void convertToEntity(PruzateljUslugaEntity originalEntity) {
+        originalEntity.setOib(oib);
+        originalEntity.setAdresa(adresa);
     }
 }

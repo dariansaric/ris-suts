@@ -1,10 +1,13 @@
 package model.objects;
 
+import model.Repository;
+import model.entity.FizickaOsobaEntity;
+
 import java.sql.Date;
 import java.util.Objects;
 
 
-public class FizickaOsoba {
+public class FizickaOsoba implements Repository<FizickaOsobaEntity> {
     private String oib;
     private String ime;
     private String prezime;
@@ -67,5 +70,24 @@ public class FizickaOsoba {
     @Override
     public int hashCode() {
         return Objects.hash(oib, ime, prezime, datumRodjenja);
+    }
+
+    @Override
+    public FizickaOsobaEntity convertToEntity() {
+        FizickaOsobaEntity e = new FizickaOsobaEntity();
+        e.setOib(oib);
+        e.setIme(ime);
+        e.setPrezime(prezime);
+        e.setDatumRodjenja(datumRodjenja);
+
+        return e;
+    }
+
+    @Override
+    public void convertToEntity(FizickaOsobaEntity originalEntity) {
+        originalEntity.setOib(oib);
+        originalEntity.setIme(ime);
+        originalEntity.setPrezime(prezime);
+        originalEntity.setDatumRodjenja(datumRodjenja);
     }
 }

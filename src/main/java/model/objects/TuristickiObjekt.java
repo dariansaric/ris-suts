@@ -1,8 +1,11 @@
 package model.objects;
 
+import model.Repository;
+import model.entity.TuristickiObjektEntity;
+
 import java.util.Objects;
 
-public class TuristickiObjekt {
+public class TuristickiObjekt implements Repository<TuristickiObjektEntity> {
     private long sifraObjekt;
     private String oib;
     private String naziv;
@@ -64,5 +67,21 @@ public class TuristickiObjekt {
     @Override
     public int hashCode() {
         return Objects.hash(sifraObjekt, oib, naziv, sifraVrsta);
+    }
+
+    @Override
+    public TuristickiObjektEntity convertToEntity() {
+        TuristickiObjektEntity o = new TuristickiObjektEntity();
+        convertToEntity(o);
+
+        return o;
+    }
+
+    @Override
+    public void convertToEntity(TuristickiObjektEntity o) {
+        o.setOib(oib);
+        o.setSifraObjekt(sifraObjekt);
+        o.setNaziv(naziv);
+        o.setSifraVrsta(sifraVrsta);
     }
 }

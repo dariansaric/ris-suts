@@ -6,6 +6,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "PruzateljUsluga", schema = "public", catalog = "suts")
 @NamedQueries(value = {
+        @NamedQuery(name = "PruzateljUsluga.dohvatiSve", query = "select p from PruzateljUslugaEntity p"),
         @NamedQuery(name = "PruzateljUsluga.dohvatiObjekte", query = "select to from TuristickiObjektEntity as to where to.oib=:oib")
 })
 public class PruzateljUslugaEntity {

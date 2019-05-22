@@ -2,6 +2,10 @@ package dao;
 
 
 import model.entity.*;
+import model.objects.FizickaOsoba;
+import model.objects.PravnaOsoba;
+import model.objects.PruzateljUsluga;
+import model.objects.TuristickiObjekt;
 
 import java.util.List;
 
@@ -35,7 +39,7 @@ public interface DAO {
 //    String[] HOURS = new String[]{"00", "01", "02", "03", "04", "05", "06", "07", "08", "09",
 //            "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"};
 //
-//    void postMovie(Movie movie) throws DAOException;
+//    boolean postMovie(Movie movie) throws DAOException;
 //
 //    List<SearchResult> getSearchResults(String query) throws DAOException;
 //
@@ -46,12 +50,26 @@ public interface DAO {
 //    List<Util.PivotResult> getAnalysisResultsForHours(Date start, Date end) throws DAOException;
     List<PruzateljUslugaEntity> dohvatiPruzatelje();
 
-    void pohraniPruzatelja();
+    boolean pohraniPruzatelja(PruzateljUsluga pruzateljUsluga);
+
+    boolean azurirajPruzatelja(PruzateljUsluga pruzateljUsluga);
     PruzateljUslugaEntity dohvatiPruzatelja(String oib);
     FizickaOsobaEntity dohvatiFizickuOsobu(String oib);
+
+    boolean pohraniFizickuOsobu(FizickaOsoba fizickaOsoba);
+
+    boolean azurirajFizickuOsobu(FizickaOsoba fizickaOsoba);
     PravnaOsobaEntity dohvatiPravnuOsobu(String oib);
+
+    boolean pohraniPravnuOsobu(PravnaOsoba pravnaOsoba);
+
+    boolean azurirajPravnuOsobu(PravnaOsoba pravnaOsoba);
     List<TuristickiObjektEntity> dohvatiSveObjekte(String oib);
     TuristickiObjektEntity dohvatiTuristickiObjekt(long sifraObjekt);
+
+    boolean pohraniTuristickiObjekt(TuristickiObjekt objekt);
+
+    boolean azurirajTuristickiObjekt(TuristickiObjekt objekt);
 //    RegistracijaObjektEntity dohvatiRegistracijuObjekt(long sifraObjekt);
     List<GostEntity> dohvatiGoste(long sifraObjekt);
     //todo:odredi sto je najlakse prikazivati
