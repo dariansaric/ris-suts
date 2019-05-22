@@ -1,19 +1,26 @@
-package model;
+package model.objects;
 
-import javax.persistence.*;
 import java.sql.Date;
 import java.util.Objects;
 
-@Entity
-@Table(name = "FizickaOsoba", schema = "public", catalog = "suts")
-public class FizickaOsobaEntity {
+
+public class FizickaOsoba {
     private String oib;
     private String ime;
     private String prezime;
     private Date datumRodjenja;
 
-    @Id
-    @Column(name = "oib", nullable = false, length = 255)
+    public FizickaOsoba() {
+    }
+
+    public FizickaOsoba(String oib, String ime, String prezime, Date datumRodjenja) {
+        this.oib = oib;
+        this.ime = ime;
+        this.prezime = prezime;
+        this.datumRodjenja = datumRodjenja;
+    }
+
+
     public String getOib() {
         return oib;
     }
@@ -22,8 +29,6 @@ public class FizickaOsobaEntity {
         this.oib = oib;
     }
 
-    @Basic
-    @Column(name = "ime", nullable = false, length = 255)
     public String getIme() {
         return ime;
     }
@@ -32,8 +37,6 @@ public class FizickaOsobaEntity {
         this.ime = ime;
     }
 
-    @Basic
-    @Column(name = "prezime", nullable = false, length = 255)
     public String getPrezime() {
         return prezime;
     }
@@ -42,8 +45,6 @@ public class FizickaOsobaEntity {
         this.prezime = prezime;
     }
 
-    @Basic
-    @Column(name = "datumRodjenja", nullable = false)
     public Date getDatumRodjenja() {
         return datumRodjenja;
     }
@@ -56,7 +57,7 @@ public class FizickaOsobaEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        FizickaOsobaEntity that = (FizickaOsobaEntity) o;
+        FizickaOsoba that = (FizickaOsoba) o;
         return Objects.equals(oib, that.oib) &&
                 Objects.equals(ime, that.ime) &&
                 Objects.equals(prezime, that.prezime) &&

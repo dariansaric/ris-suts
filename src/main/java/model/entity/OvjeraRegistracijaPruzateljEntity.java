@@ -1,12 +1,12 @@
-package model;
+package model.entity;
 
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "OvjeraRegistracijaObjekt", schema = "public", catalog = "suts")
-@IdClass(OvjeraRegistracijaObjektEntityPK.class)
-public class OvjeraRegistracijaObjektEntity {
+@Table(name = "OvjeraRegistracijaPruzatelj", schema = "public", catalog = "suts")
+@IdClass(OvjeraRegistracijaPruzateljEntityPK.class)
+public class OvjeraRegistracijaPruzateljEntity {
     private long sifraRegistracija;
     private long sifraDuznosnik;
     private boolean status;
@@ -45,7 +45,7 @@ public class OvjeraRegistracijaObjektEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        OvjeraRegistracijaObjektEntity that = (OvjeraRegistracijaObjektEntity) o;
+        OvjeraRegistracijaPruzateljEntity that = (OvjeraRegistracijaPruzateljEntity) o;
         return sifraRegistracija == that.sifraRegistracija &&
                 sifraDuznosnik == that.sifraDuznosnik &&
                 status == that.status;

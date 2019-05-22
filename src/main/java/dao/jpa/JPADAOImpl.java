@@ -2,7 +2,7 @@ package dao.jpa;
 
 
 import dao.DAO;
-import model.*;
+import model.entity.*;
 
 import java.util.List;
 

@@ -1,16 +1,22 @@
-package model;
+package model.objects;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import java.io.Serializable;
 import java.util.Objects;
 
-public class OvjeraRegistracijaObjektEntityPK implements Serializable {
+public class OvjeraRegistracijaObjekt {
     private long sifraRegistracija;
     private long sifraDuznosnik;
+    private boolean status;
 
-    @Column(name = "sifraRegistracija", nullable = false)
-    @Id
+    public OvjeraRegistracijaObjekt(long sifraRegistracija, long sifraDuznosnik, boolean status) {
+        this.sifraRegistracija = sifraRegistracija;
+        this.sifraDuznosnik = sifraDuznosnik;
+        this.status = status;
+    }
+
+    public OvjeraRegistracijaObjekt() {
+    }
+
+
     public long getSifraRegistracija() {
         return sifraRegistracija;
     }
@@ -19,8 +25,6 @@ public class OvjeraRegistracijaObjektEntityPK implements Serializable {
         this.sifraRegistracija = sifraRegistracija;
     }
 
-    @Column(name = "sifraDuznosnik", nullable = false)
-    @Id
     public long getSifraDuznosnik() {
         return sifraDuznosnik;
     }
@@ -29,17 +33,26 @@ public class OvjeraRegistracijaObjektEntityPK implements Serializable {
         this.sifraDuznosnik = sifraDuznosnik;
     }
 
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        OvjeraRegistracijaObjektEntityPK that = (OvjeraRegistracijaObjektEntityPK) o;
+        OvjeraRegistracijaObjekt that = (OvjeraRegistracijaObjekt) o;
         return sifraRegistracija == that.sifraRegistracija &&
-                sifraDuznosnik == that.sifraDuznosnik;
+                sifraDuznosnik == that.sifraDuznosnik &&
+                status == that.status;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(sifraRegistracija, sifraDuznosnik);
+        return Objects.hash(sifraRegistracija, sifraDuznosnik, status);
     }
 }

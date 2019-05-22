@@ -1,21 +1,23 @@
-package model;
+package model.objects;
 
-import javax.persistence.*;
 import java.util.Objects;
 
-@Entity
-@Table(name = "TuristickiObjekt", schema = "public", catalog = "suts")
-@NamedQueries(value = {
-        @NamedQuery(name = "TuristickiObjekt.dohvatiGoste", query = "select g from GostEntity as g where g.sifraObjekt = :sobj")
-})
-public class TuristickiObjektEntity {
+public class TuristickiObjekt {
     private long sifraObjekt;
     private String oib;
     private String naziv;
     private long sifraVrsta;
 
-    @Id
-    @Column(name = "sifraObjekt", nullable = false)
+    public TuristickiObjekt(long sifraObjekt, String oib, String naziv, long sifraVrsta) {
+        this.sifraObjekt = sifraObjekt;
+        this.oib = oib;
+        this.naziv = naziv;
+        this.sifraVrsta = sifraVrsta;
+    }
+
+    public TuristickiObjekt() {
+    }
+
     public long getSifraObjekt() {
         return sifraObjekt;
     }
@@ -24,8 +26,6 @@ public class TuristickiObjektEntity {
         this.sifraObjekt = sifraObjekt;
     }
 
-    @Basic
-    @Column(name = "oib", nullable = false, length = 255)
     public String getOib() {
         return oib;
     }
@@ -34,8 +34,6 @@ public class TuristickiObjektEntity {
         this.oib = oib;
     }
 
-    @Basic
-    @Column(name = "naziv", nullable = false, length = 255)
     public String getNaziv() {
         return naziv;
     }
@@ -44,8 +42,6 @@ public class TuristickiObjektEntity {
         this.naziv = naziv;
     }
 
-    @Basic
-    @Column(name = "sifraVrsta", nullable = false)
     public long getSifraVrsta() {
         return sifraVrsta;
     }
@@ -58,7 +54,7 @@ public class TuristickiObjektEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        TuristickiObjektEntity that = (TuristickiObjektEntity) o;
+        TuristickiObjekt that = (TuristickiObjekt) o;
         return sifraObjekt == that.sifraObjekt &&
                 sifraVrsta == that.sifraVrsta &&
                 Objects.equals(oib, that.oib) &&

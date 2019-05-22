@@ -1,7 +1,7 @@
 package dao;
 
 
-import model.*;
+import model.entity.*;
 
 import java.util.List;
 
@@ -45,6 +45,8 @@ public interface DAO {
 //
 //    List<Util.PivotResult> getAnalysisResultsForHours(Date start, Date end) throws DAOException;
     List<PruzateljUslugaEntity> dohvatiPruzatelje();
+
+    void pohraniPruzatelja();
     PruzateljUslugaEntity dohvatiPruzatelja(String oib);
     FizickaOsobaEntity dohvatiFizickuOsobu(String oib);
     PravnaOsobaEntity dohvatiPravnuOsobu(String oib);

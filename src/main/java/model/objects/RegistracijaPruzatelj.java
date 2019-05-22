@@ -1,16 +1,20 @@
-package model;
+package model.objects;
 
-import javax.persistence.*;
 import java.util.Objects;
 
-@Entity
-@Table(name = "RegistracijaPruzatelj", schema = "public", catalog = "suts")
-public class RegistracijaPruzateljEntity {
+public class RegistracijaPruzatelj {
     private long sifraRegistracija;
     private String oib;
 
-    @Id
-    @Column(name = "sifraRegistracija", nullable = false)
+    public RegistracijaPruzatelj() {
+    }
+
+    public RegistracijaPruzatelj(long sifraRegistracija, String oib) {
+        this.sifraRegistracija = sifraRegistracija;
+        this.oib = oib;
+    }
+
+
     public long getSifraRegistracija() {
         return sifraRegistracija;
     }
@@ -19,8 +23,6 @@ public class RegistracijaPruzateljEntity {
         this.sifraRegistracija = sifraRegistracija;
     }
 
-    @Basic
-    @Column(name = "oib", nullable = false, length = 255)
     public String getOib() {
         return oib;
     }
@@ -33,7 +35,7 @@ public class RegistracijaPruzateljEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        RegistracijaPruzateljEntity that = (RegistracijaPruzateljEntity) o;
+        RegistracijaPruzatelj that = (RegistracijaPruzatelj) o;
         return sifraRegistracija == that.sifraRegistracija &&
                 Objects.equals(oib, that.oib);
     }

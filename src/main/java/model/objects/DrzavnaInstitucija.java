@@ -1,16 +1,19 @@
-package model;
+package model.objects;
 
-import javax.persistence.*;
 import java.util.Objects;
 
-@Entity
-@Table(name = "DrzavnaInstitucija", schema = "public", catalog = "suts")
-public class DrzavnaInstitucijaEntity {
+public class DrzavnaInstitucija {
     private long sifraInstitucija;
     private String naziv;
 
-    @Id
-    @Column(name = "sifraInstitucija", nullable = false)
+    public DrzavnaInstitucija(long sifraInstitucija, String naziv) {
+        this.sifraInstitucija = sifraInstitucija;
+        this.naziv = naziv;
+    }
+
+    public DrzavnaInstitucija() {
+    }
+
     public long getSifraInstitucija() {
         return sifraInstitucija;
     }
@@ -19,8 +22,7 @@ public class DrzavnaInstitucijaEntity {
         this.sifraInstitucija = sifraInstitucija;
     }
 
-    @Basic
-    @Column(name = "naziv", nullable = false, length = 255)
+
     public String getNaziv() {
         return naziv;
     }
@@ -33,7 +35,7 @@ public class DrzavnaInstitucijaEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        DrzavnaInstitucijaEntity that = (DrzavnaInstitucijaEntity) o;
+        DrzavnaInstitucija that = (DrzavnaInstitucija) o;
         return sifraInstitucija == that.sifraInstitucija &&
                 Objects.equals(naziv, that.naziv);
     }

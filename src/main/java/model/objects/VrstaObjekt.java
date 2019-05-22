@@ -1,16 +1,19 @@
-package model;
+package model.objects;
 
-import javax.persistence.*;
 import java.util.Objects;
 
-@Entity
-@Table(name = "VrstaObjekt", schema = "public", catalog = "suts")
-public class VrstaObjektEntity {
+public class VrstaObjekt {
     private long sifraVrsta;
     private String nazivVrsta;
 
-    @Id
-    @Column(name = "sifraVrsta", nullable = false)
+    public VrstaObjekt(long sifraVrsta, String nazivVrsta) {
+        this.sifraVrsta = sifraVrsta;
+        this.nazivVrsta = nazivVrsta;
+    }
+
+    public VrstaObjekt() {
+    }
+
     public long getSifraVrsta() {
         return sifraVrsta;
     }
@@ -19,8 +22,6 @@ public class VrstaObjektEntity {
         this.sifraVrsta = sifraVrsta;
     }
 
-    @Basic
-    @Column(name = "nazivVrsta", nullable = false, length = 255)
     public String getNazivVrsta() {
         return nazivVrsta;
     }
@@ -33,7 +34,7 @@ public class VrstaObjektEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        VrstaObjektEntity that = (VrstaObjektEntity) o;
+        VrstaObjekt that = (VrstaObjekt) o;
         return sifraVrsta == that.sifraVrsta &&
                 Objects.equals(nazivVrsta, that.nazivVrsta);
     }

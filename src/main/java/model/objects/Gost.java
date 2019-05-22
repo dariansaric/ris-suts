@@ -1,16 +1,19 @@
-package model;
+package model.objects;
 
-import javax.persistence.*;
 import java.util.Objects;
 
-@Entity
-@Table(name = "Gost", schema = "public", catalog = "suts")
-public class GostEntity {
+public class Gost {
     private long sifraGost;
     private long sifraObjekt;
 
-    @Id
-    @Column(name = "sifraGost", nullable = false)
+    public Gost() {
+    }
+
+    public Gost(long sifraGost, long sifraObjekt) {
+        this.sifraGost = sifraGost;
+        this.sifraObjekt = sifraObjekt;
+    }
+
     public long getSifraGost() {
         return sifraGost;
     }
@@ -19,8 +22,7 @@ public class GostEntity {
         this.sifraGost = sifraGost;
     }
 
-    @Basic
-    @Column(name = "sifraObjekt", nullable = false)
+
     public long getSifraObjekt() {
         return sifraObjekt;
     }
@@ -33,7 +35,7 @@ public class GostEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        GostEntity that = (GostEntity) o;
+        Gost that = (Gost) o;
         return sifraGost == that.sifraGost &&
                 sifraObjekt == that.sifraObjekt;
     }
