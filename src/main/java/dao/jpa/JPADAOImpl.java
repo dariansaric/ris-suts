@@ -150,4 +150,16 @@ public class JPADAOImpl implements DAO {
                 .getResultList();
     }
 
+    @Override
+    public List<VrstaObjektEntity> dohvatiVrste() {
+        return JPAEMProvider.getEntityManager()
+                .createNamedQuery("vrstaObjekt.dohvatiSve", VrstaObjektEntity.class)
+                .getResultList();
+    }
+
+    @Override
+    public VrstaObjektEntity dohvatiVrstu(long sifraVrsta) {
+        return JPAEMProvider.getEntityManager().find(VrstaObjektEntity.class, sifraVrsta);
+    }
+
 }

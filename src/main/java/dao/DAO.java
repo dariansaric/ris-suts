@@ -71,5 +71,9 @@ public interface DAO {
     boolean azurirajTuristickiObjekt(TuristickiObjekt objekt);
 //    RegistracijaObjektEntity dohvatiRegistracijuObjekt(long sifraObjekt);
     List<GostEntity> dohvatiGoste(long sifraObjekt);
+
+    List<VrstaObjektEntity> dohvatiVrste();
+
+    VrstaObjektEntity dohvatiVrstu(long sifraVrsta);
     //todo:odredi sto je najlakse prikazivati
 }

@@ -5,6 +5,9 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "VrstaObjekt", schema = "public", catalog = "suts")
+@NamedQueries(value = {
+        @NamedQuery(name = "vrstaObjekt.dohvatiSve", query = "select v from VrstaObjektEntity v")
+})
 public class VrstaObjektEntity {
     private long sifraVrsta;
     private String nazivVrsta;
