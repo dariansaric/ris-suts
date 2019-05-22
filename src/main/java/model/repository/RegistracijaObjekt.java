@@ -1,4 +1,4 @@
-package model.objects;
+package model.repository;
 
 import java.sql.Date;
 import java.util.Objects;

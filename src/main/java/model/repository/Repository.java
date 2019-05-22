@@ -1,4 +1,4 @@
-package model;
+package model.repository;
 
 public interface Repository<T> {
     T convertToEntity();

@@ -2,10 +2,10 @@ package dao;
 
 
 import model.entity.*;
-import model.objects.FizickaOsoba;
-import model.objects.PravnaOsoba;
-import model.objects.PruzateljUsluga;
-import model.objects.TuristickiObjekt;
+import model.repository.FizickaOsoba;
+import model.repository.PravnaOsoba;
+import model.repository.PruzateljUsluga;
+import model.repository.TuristickiObjekt;
 
 import java.util.List;
 
@@ -49,11 +49,10 @@ public interface DAO {
 //
 //    List<Util.PivotResult> getAnalysisResultsForHours(Date start, Date end) throws DAOException;
     List<PruzateljUslugaEntity> dohvatiPruzatelje();
-
     boolean pohraniPruzatelja(PruzateljUsluga pruzateljUsluga);
-
     boolean azurirajPruzatelja(PruzateljUsluga pruzateljUsluga);
     PruzateljUslugaEntity dohvatiPruzatelja(String oib);
+
     FizickaOsobaEntity dohvatiFizickuOsobu(String oib);
 
     boolean pohraniFizickuOsobu(FizickaOsoba fizickaOsoba);

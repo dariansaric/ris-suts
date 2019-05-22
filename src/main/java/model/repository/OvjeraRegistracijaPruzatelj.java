@@ -1,21 +1,21 @@
-package model.objects;
+package model.repository;
 
 import java.util.Objects;
 
-public class OvjeraRegistracijaObjekt {
+
+public class OvjeraRegistracijaPruzatelj {
     private long sifraRegistracija;
     private long sifraDuznosnik;
     private boolean status;
 
-    public OvjeraRegistracijaObjekt(long sifraRegistracija, long sifraDuznosnik, boolean status) {
+    public OvjeraRegistracijaPruzatelj(long sifraRegistracija, long sifraDuznosnik, boolean status) {
         this.sifraRegistracija = sifraRegistracija;
         this.sifraDuznosnik = sifraDuznosnik;
         this.status = status;
     }
 
-    public OvjeraRegistracijaObjekt() {
+    public OvjeraRegistracijaPruzatelj() {
     }
-
 
     public long getSifraRegistracija() {
         return sifraRegistracija;
@@ -45,7 +45,7 @@ public class OvjeraRegistracijaObjekt {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        OvjeraRegistracijaObjekt that = (OvjeraRegistracijaObjekt) o;
+        OvjeraRegistracijaPruzatelj that = (OvjeraRegistracijaPruzatelj) o;
         return sifraRegistracija == that.sifraRegistracija &&
                 sifraDuznosnik == that.sifraDuznosnik &&
                 status == that.status;

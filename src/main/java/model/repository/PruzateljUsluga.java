@@ -1,14 +1,16 @@
-package model.objects;
+package model.repository;
 
-import model.Repository;
 import model.entity.PruzateljUslugaEntity;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 
 public class PruzateljUsluga implements Repository<PruzateljUslugaEntity> {
     private String oib;
     private String adresa;
+    private Set<TuristickiObjekt> objekti = new HashSet<>();
 
     public PruzateljUsluga(String oib, String adresa) {
         this.oib = oib;
