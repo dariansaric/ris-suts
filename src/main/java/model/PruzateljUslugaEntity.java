@@ -9,7 +9,7 @@ import java.util.Objects;
         @NamedQuery(name = "PruzateljUsluga.dohvatiSve", query = "select p from PruzateljUslugaEntity p"),
         @NamedQuery(name = "PruzateljUsluga.dohvatiObjekte", query = "select to from TuristickiObjektEntity as to where to.oib=:o")
 })
-public class PruzateljUslugaEntity {//todo:slozene reference?
+public class PruzateljUslugaEntity {
     private String oib;
     private String adresa;
 

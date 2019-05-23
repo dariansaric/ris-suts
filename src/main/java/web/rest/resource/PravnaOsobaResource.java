@@ -14,7 +14,6 @@ import java.sql.Date;
 public class PravnaOsobaResource {
     private static final Gson GSON = new Gson();
 
-    //todo: frontend
     @Path("/{oib}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)

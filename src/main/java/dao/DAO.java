@@ -75,5 +75,4 @@ public interface DAO {
     List<VrstaObjektEntity> dohvatiVrste();
 
     VrstaObjektEntity dohvatiVrstu(long sifraVrsta);
-    //todo:odredi sto je najlakse prikazivati
 }
