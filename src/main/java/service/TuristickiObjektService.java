@@ -1,7 +1,7 @@
 package service;
 
 import dao.DAOProvider;
-import model.entity.TuristickiObjektEntity;
+import model.TuristickiObjektEntity;
 import model.repository.TuristickiObjekt;
 
 import java.util.ArrayList;

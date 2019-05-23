@@ -1,6 +1,6 @@
 package model.repository;
 
-import model.entity.FizickaOsobaEntity;
+import model.FizickaOsobaEntity;
 
 import java.sql.Date;
 import java.util.Objects;

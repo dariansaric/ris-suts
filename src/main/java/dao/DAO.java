@@ -1,7 +1,7 @@
 package dao;
 
 
-import model.entity.*;
+import model.*;
 import model.repository.FizickaOsoba;
 import model.repository.PravnaOsoba;
 import model.repository.PruzateljUsluga;

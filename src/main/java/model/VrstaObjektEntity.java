@@ -1,4 +1,4 @@
-package model.entity;
+package model;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -6,7 +6,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "VrstaObjekt", schema = "public", catalog = "suts")
 @NamedQueries(value = {
-        @NamedQuery(name = "vrstaObjekt.dohvatiSve", query = "select v from VrstaObjektEntity v")
+        @NamedQuery(name = "vrstaObjekt.dohvatiSve", query = "select v from VrstaObjektEntity as v")
 })
 public class VrstaObjektEntity {
     private long sifraVrsta;

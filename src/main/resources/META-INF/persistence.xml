@@ -3,21 +3,21 @@
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
              version="2.1">
 
-    <persistence-unit name="ris.suts">
+    <persistence-unit name="ris.suts" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <mapping-file>META-INF/persistence-generated.xml</mapping-file>
-        <class>model.entity.DrzavnaInstitucijaEntity</class>
-        <class>model.entity.DrzavniDuznosnikEntity</class>
-        <class>model.entity.FizickaOsobaEntity</class>
-        <class>model.entity.GostEntity</class>
-        <class>model.entity.OvjeraRegistracijaObjektEntity</class>
-        <class>model.entity.OvjeraRegistracijaPruzateljEntity</class>
-        <class>model.entity.PravnaOsobaEntity</class>
-        <class>model.entity.PruzateljUslugaEntity</class>
-        <class>model.entity.RegistracijaObjektEntity</class>
-        <class>model.entity.RegistracijaPruzateljEntity</class>
-        <class>model.entity.TuristickiObjektEntity</class>
-        <class>model.entity.VrstaObjektEntity</class>
+        <class>model.DrzavnaInstitucijaEntity</class>
+        <class>model.DrzavniDuznosnikEntity</class>
+        <class>model.FizickaOsobaEntity</class>
+        <class>model.GostEntity</class>
+        <class>model.OvjeraRegistracijaObjektEntity</class>
+        <class>model.OvjeraRegistracijaPruzateljEntity</class>
+        <class>model.PravnaOsobaEntity</class>
+        <class>model.PruzateljUslugaEntity</class>
+        <class>model.RegistracijaObjektEntity</class>
+        <class>model.RegistracijaPruzateljEntity</class>
+        <class>model.TuristickiObjektEntity</class>
+        <class>model.VrstaObjektEntity</class>
 
         <shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
 

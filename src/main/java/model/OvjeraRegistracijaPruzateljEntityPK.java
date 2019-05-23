@@ -1,11 +1,11 @@
-package model.entity;
+package model;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class OvjeraRegistracijaObjektEntityPK implements Serializable {
+public class OvjeraRegistracijaPruzateljEntityPK implements Serializable {
     private long sifraRegistracija;
     private long sifraDuznosnik;
 
@@ -33,7 +33,7 @@ public class OvjeraRegistracijaObjektEntityPK implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        OvjeraRegistracijaObjektEntityPK that = (OvjeraRegistracijaObjektEntityPK) o;
+        OvjeraRegistracijaPruzateljEntityPK that = (OvjeraRegistracijaPruzateljEntityPK) o;
         return sifraRegistracija == that.sifraRegistracija &&
                 sifraDuznosnik == that.sifraDuznosnik;
     }

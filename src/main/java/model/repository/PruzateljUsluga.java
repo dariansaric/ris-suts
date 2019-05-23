@@ -1,6 +1,6 @@
 package model.repository;
 
-import model.entity.PruzateljUslugaEntity;
+import model.PruzateljUslugaEntity;
 
 import java.util.HashSet;
 import java.util.Objects;

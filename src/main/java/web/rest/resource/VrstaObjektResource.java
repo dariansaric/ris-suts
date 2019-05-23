@@ -22,6 +22,6 @@ public class VrstaObjektResource {
 
     @Path("/{vrsta}")
     public Response dohvatiVrstu(@PathParam("vrsta") final long vrsta) {
-        return Response.status(200).entity(VrstaObjektService.dohvatiVrstu(vrsta)).build();
+        return Response.status(200).entity(GSON.toJson(VrstaObjektService.dohvatiVrstu(vrsta))).build();
     }
 }

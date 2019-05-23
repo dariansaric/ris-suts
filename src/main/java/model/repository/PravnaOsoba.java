@@ -1,6 +1,6 @@
 package model.repository;
 
-import model.entity.PravnaOsobaEntity;
+import model.PravnaOsobaEntity;
 
 import java.sql.Date;
 import java.util.Objects;

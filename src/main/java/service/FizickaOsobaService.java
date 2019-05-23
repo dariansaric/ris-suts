@@ -2,7 +2,7 @@ package service;
 
 
 import dao.DAOProvider;
-import model.entity.FizickaOsobaEntity;
+import model.FizickaOsobaEntity;
 import model.repository.FizickaOsoba;
 
 public class FizickaOsobaService {

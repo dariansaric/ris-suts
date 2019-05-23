@@ -2,7 +2,7 @@ package dao.jpa;
 
 
 import dao.DAO;
-import model.entity.*;
+import model.*;
 import model.repository.FizickaOsoba;
 import model.repository.PravnaOsoba;
 import model.repository.PruzateljUsluga;
@@ -48,7 +48,15 @@ public class JPADAOImpl implements DAO {
 
     @Override
     public PruzateljUslugaEntity dohvatiPruzatelja(String oib) {
-        return JPAEMProvider.getEntityManager().find(PruzateljUslugaEntity.class, oib);
+        try {
+            EntityManager em = JPAEMProvider.getEntityManager();
+            PruzateljUslugaEntity e = em.find(PruzateljUslugaEntity.class, oib);
+            return e;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        return null;
     }
 
     @Override
@@ -110,7 +118,7 @@ public class JPADAOImpl implements DAO {
     public List<TuristickiObjektEntity> dohvatiSveObjekte(String oib) {
         return JPAEMProvider.getEntityManager()
                 .createNamedQuery("PruzateljUsluga.dohvatiObjekte", TuristickiObjektEntity.class)
-                .setParameter("oib", oib)
+                .setParameter("o", oib)
                 .getResultList();
     }
 
@@ -153,7 +161,7 @@ public class JPADAOImpl implements DAO {
     @Override
     public List<VrstaObjektEntity> dohvatiVrste() {
         return JPAEMProvider.getEntityManager()
-                .createNamedQuery("vrstaObjekt.dohvatiSve", VrstaObjektEntity.class)
+                .createNamedQuery("vrstaObjekt.dohvatiSve")
                 .getResultList();
     }
 

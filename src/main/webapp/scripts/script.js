@@ -54,6 +54,35 @@ function processClick(tag) {
     }
 }
 
+function dohvatiFizickuOsobu(oib) {
+    $.ajax(
+        {
+            url: "rest/fosoba/" + htmlEscape(oib),
+            data: {},
+            dataType: "json",
+            success: function (data) {
+                $("#osoba-" + htmlEscape(oib) + "-ime").html(data.ime);
+                $("#osoba-" + htmlEscape(oib) + "-prezime").html(data.prezime);
+                $("#osoba-" + htmlEscape(oib) + "-datumRodjenja").html(data.datumRodjenja);
+            }
+        }
+    )
+}
+
+function dohvatiPravnuOsobu(oib) {
+    $.ajax(
+        {
+            url: "rest/posoba/" + htmlEscape(oib),
+            data: {},
+            dataType: "json",
+            success: function (data) {
+                $("#osoba-" + htmlEscape(oib) + "-naziv").html(data.naziv);
+                $("#osoba-" + htmlEscape(oib) + "-datumOsnivanja").html(data.datumOsnivanja);
+                $("#osoba-" + htmlEscape(oib) + "-pocetniKapital").html(data.pocetniKapital);
+            }
+        }
+    )
+}
 /**
  * Displays thumbnail images for the provided tag.
  *

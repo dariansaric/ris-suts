@@ -2,7 +2,7 @@
 <entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
         version="2.0">
 
-    <entity class="model.entity.DrzavnaInstitucijaEntity">
+    <entity class="model.DrzavnaInstitucijaEntity">
         <table name="DrzavnaInstitucija" schema="public" catalog="suts"/>
         <attributes>
             <id name="sifraInstitucija">
@@ -13,7 +13,7 @@
             </basic>
         </attributes>
     </entity>
-    <entity class="model.entity.DrzavniDuznosnikEntity">
+    <entity class="model.DrzavniDuznosnikEntity">
         <table name="DrzavniDuznosnik" schema="public" catalog="suts"/>
         <attributes>
             <id name="sifraDuznosnik">
@@ -30,7 +30,7 @@
             </basic>
         </attributes>
     </entity>
-    <entity class="model.entity.FizickaOsobaEntity">
+    <entity class="model.FizickaOsobaEntity">
         <table name="FizickaOsoba" schema="public" catalog="suts"/>
         <attributes>
             <id name="oib">
@@ -47,7 +47,7 @@
             </basic>
         </attributes>
     </entity>
-    <entity class="model.entity.GostEntity">
+    <entity class="model.GostEntity">
         <table name="Gost" schema="public" catalog="suts"/>
         <attributes>
             <id name="sifraGost">
@@ -58,9 +58,9 @@
             </basic>
         </attributes>
     </entity>
-    <entity class="model.entity.OvjeraRegistracijaObjektEntity">
+    <entity class="model.OvjeraRegistracijaObjektEntity">
         <table name="OvjeraRegistracijaObjekt" schema="public" catalog="suts"/>
-        <id-class class="model.entity.OvjeraRegistracijaObjektEntityPK"/>
+        <id-class class="model.OvjeraRegistracijaObjektEntityPK"/>
         <attributes>
             <id name="sifraRegistracija">
                 <column name="sifraRegistracija" precision="-1"/>
@@ -73,9 +73,9 @@
             </basic>
         </attributes>
     </entity>
-    <entity class="model.entity.OvjeraRegistracijaPruzateljEntity">
+    <entity class="model.OvjeraRegistracijaPruzateljEntity">
         <table name="OvjeraRegistracijaPruzatelj" schema="public" catalog="suts"/>
-        <id-class class="model.entity.OvjeraRegistracijaPruzateljEntityPK"/>
+        <id-class class="model.OvjeraRegistracijaPruzateljEntityPK"/>
         <attributes>
             <id name="sifraRegistracija">
                 <column name="sifraRegistracija" precision="-1"/>
@@ -88,7 +88,7 @@
             </basic>
         </attributes>
     </entity>
-    <entity class="model.entity.PravnaOsobaEntity">
+    <entity class="model.PravnaOsobaEntity">
         <table name="PravnaOsoba" schema="public" catalog="suts"/>
         <attributes>
             <id name="oib">
@@ -105,7 +105,7 @@
             </basic>
         </attributes>
     </entity>
-    <entity class="model.entity.PruzateljUslugaEntity">
+    <entity class="model.PruzateljUslugaEntity">
         <table name="PruzateljUsluga" schema="public" catalog="suts"/>
         <attributes>
             <id name="oib">
@@ -116,7 +116,7 @@
             </basic>
         </attributes>
     </entity>
-    <entity class="model.entity.RegistracijaObjektEntity">
+    <entity class="model.RegistracijaObjektEntity">
         <table name="RegistracijaObjekt" schema="public" catalog="suts"/>
         <attributes>
             <id name="sifraRegistracija">
@@ -130,7 +130,7 @@
             </basic>
         </attributes>
     </entity>
-    <entity class="model.entity.RegistracijaPruzateljEntity">
+    <entity class="model.RegistracijaPruzateljEntity">
         <table name="RegistracijaPruzatelj" schema="public" catalog="suts"/>
         <attributes>
             <id name="sifraRegistracija">
@@ -141,7 +141,7 @@
             </basic>
         </attributes>
     </entity>
-    <entity class="model.entity.TuristickiObjektEntity">
+    <entity class="model.TuristickiObjektEntity">
         <table name="TuristickiObjekt" schema="public" catalog="suts"/>
         <attributes>
             <id name="sifraObjekt">
@@ -158,7 +158,7 @@
             </basic>
         </attributes>
     </entity>
-    <entity class="model.entity.VrstaObjektEntity">
+    <entity class="model.VrstaObjektEntity">
         <table name="VrstaObjekt" schema="public" catalog="suts"/>
         <attributes>
             <id name="sifraVrsta">

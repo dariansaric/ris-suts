@@ -1,10 +1,10 @@
 package model.repository;
 
-import model.entity.TuristickiObjektEntity;
+import model.TuristickiObjektEntity;
 
 import java.util.Objects;
 
-public class TuristickiObjekt implements Service<TuristickiObjektEntity> {
+public class TuristickiObjekt implements Repository<TuristickiObjektEntity> {
     private long sifraObjekt;
     private String oib;
     private String naziv;

@@ -10,6 +10,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.sql.Date;
 
+@Path("/posoba")
 public class PravnaOsobaResource {
     private static final Gson GSON = new Gson();
 

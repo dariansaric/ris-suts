@@ -1,7 +1,7 @@
 package service;
 
 import dao.DAOProvider;
-import model.entity.PravnaOsobaEntity;
+import model.PravnaOsobaEntity;
 import model.repository.PravnaOsoba;
 
 public class PravnaOsobaService {

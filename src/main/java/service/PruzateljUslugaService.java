@@ -1,7 +1,7 @@
 package service;
 
 import dao.DAOProvider;
-import model.entity.PruzateljUslugaEntity;
+import model.PruzateljUslugaEntity;
 import model.repository.PruzateljUsluga;
 
 import java.util.ArrayList;

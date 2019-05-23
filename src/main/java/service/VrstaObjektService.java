@@ -1,7 +1,7 @@
 package service;
 
 import dao.DAOProvider;
-import model.entity.VrstaObjektEntity;
+import model.VrstaObjektEntity;
 import model.repository.VrstaObjekt;
 
 import java.util.ArrayList;
