@@ -10,11 +10,9 @@ import java.util.List;
 public class PruzateljUslugaService {
 
     private static PruzateljUsluga convertToObject(PruzateljUslugaEntity e) {
-        PruzateljUsluga o = new PruzateljUsluga();
-        o.setOib(e.getOib());
-        o.setAdresa(e.getAdresa());
-
-        return o;
+        return e == null ? null : new PruzateljUsluga(
+                e.getOib(),
+                e.getAdresa());
     }
 
     public static List<PruzateljUsluga> dohvatiPruzatelje() {
