@@ -32,7 +32,7 @@ public class PruzateljUslugaResource {
     public Response azurirajPruzatelj(@PathParam("oib") final String oib, final String json) {
         PruzateljUsluga p = new PruzateljUsluga();
         JSONObject o = new JSONObject(json);
-        p.setOib(o.getString("oib"));
+        p.setOib(oib);
         p.setAdresa(o.getString("adresa"));
 
         return Response.status(PruzateljUslugaService.azurirajPruzatelja(p) ? 200 : 304).build();

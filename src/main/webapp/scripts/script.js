@@ -1,29 +1,29 @@
 //Displays stored tags
-$(document).ready(
-    function () {
-        $.ajax(
-            {
-                url: "rest/tag",
-                data: {},
-                dataType: "json",
-                success: function (data) {
-                    let tags = data; // već je JSON zbog dataType gore...
-                    let html = "";
-                    if (0 === tags.length) {
-                        html = "No tags, sorry :("
-                    } else {
-                        for (let i = 0; i < tags.length; i++) {
-                            if (i > 0 && i < tags.length) html += "<br>";
-                            html += "<button class='tag-button' onclick=\"processClick.call(this, \'" + htmlEscape(tags[i]) + "\');\">"
-                                + tags[i] + "</button><br>";
-                            html += "<div id='" + htmlEscape(tags[i]) + "-Tag'>&nbsp</div>";
-                        }
-                    }
-                    $("#tags").html(html);
-                }
-            }
-        );
-    });
+// $(document).ready(
+//     function () {
+//         $.ajax(
+//             {
+//                 url: "rest/tag",
+//                 data: {},
+//                 dataType: "json",
+//                 success: function (data) {
+//                     let tags = data; // već je JSON zbog dataType gore...
+//                     let html = "";
+//                     if (0 === tags.length) {
+//                         html = "No tags, sorry :("
+//                     } else {
+//                         for (let i = 0; i < tags.length; i++) {
+//                             if (i > 0 && i < tags.length) html += "<br>";
+//                             html += "<button class='tag-button' onclick=\"processClick.call(this, \'" + htmlEscape(tags[i]) + "\');\">"
+//                                 + tags[i] + "</button><br>";
+//                             html += "<div id='" + htmlEscape(tags[i]) + "-Tag'>&nbsp</div>";
+//                         }
+//                     }
+//                     $("#tags").html(html);
+//                 }
+//             }
+//         );
+//     });
 
 $(".exper").hover(function () {
     document.getElementById("tit").innerHTML = "<h3>Why wouldn't you?! It's... fff.freee</h3>";
@@ -79,6 +79,26 @@ function dohvatiPravnuOsobu(oib) {
                 $("#osoba-" + htmlEscape(oib) + "-naziv").html(data.naziv);
                 $("#osoba-" + htmlEscape(oib) + "-datumOsnivanja").html(data.datumOsnivanja);
                 $("#osoba-" + htmlEscape(oib) + "-pocetniKapital").html(data.pocetniKapital);
+            }
+        }
+    )
+}
+
+function azurirajPruzatelja(oib) {
+    let json = {
+        "oib": oib,
+        "adresa": $("#pruzatelj-adresa").getAttribute("value")
+    };
+    $.ajax(
+        {
+            url: "rest/" + oib,
+            data: json,
+            success: function (data, textStatus, xhr) {
+                alert(xhr.status);
+
+            },
+            error: function (status) {
+                alert('Neuspješno ažuriran');
             }
         }
     )
