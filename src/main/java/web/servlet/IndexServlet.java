@@ -29,7 +29,8 @@ public class IndexServlet extends HttpServlet {
         req.setAttribute("fosoba", f != null);
         req.setAttribute("pruzatelj", p.get(0));
 //        req.setAttribute("next", p.get(1).getOib());
-        req.setAttribute("osoba", f == null ? o : f);
+        req.setAttribute("osoba", f);
+        req.setAttribute("posoba", o);
         req.getRequestDispatcher("index.jsp").forward(req, resp);
     }
 }

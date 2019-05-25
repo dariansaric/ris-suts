@@ -37,7 +37,7 @@ public class FizickaOsobaResource {
         p.setOib(o.getString("oib"));
         p.setIme(o.getString("ime"));
         p.setPrezime(o.getString("prezime"));
-        p.setDatumRodjenja(Date.valueOf("datumRodjenja"));
+        p.setDatumRodjenja(Date.valueOf(o.getString("datumRodjenja")));
 
         return Response.status(FizickaOsobaService.azuzirajFizickuOsobu(p) ? 200 : 304).build();
     }
