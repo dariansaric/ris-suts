@@ -39,7 +39,9 @@ public class JPADAOImpl implements DAO {
     public boolean azurirajPruzatelja(PruzateljUsluga pruzateljUsluga) {
         try {
             PruzateljUslugaEntity o = JPAEMProvider.getEntityManager().find(PruzateljUslugaEntity.class, pruzateljUsluga.getOib());
-            pruzateljUsluga.convertToEntity(o);
+            o.setOib(pruzateljUsluga.getOib());
+            o.setAdresa(pruzateljUsluga.getAdresa());
+
         } catch (Exception e) {
             return false;
         }

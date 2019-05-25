@@ -12,7 +12,7 @@
     <title>
         <jsp:useBean id="pruzatelj" scope="request" type="model.repository.PruzateljUsluga"/>
         <c:out value="${pruzatelj.oib}"/></title>
-    <%--    <script src="scripts/htmlescaping.js"></script>--%>
+    <%--        <script src="scripts/htmlescaping.js"></script>--%>
     <script>
         function htmlEscape(str) {
             return String(str)
@@ -26,14 +26,14 @@
         function azurirajPruzatelja(oib) {
             let json = {
                 "oib": oib,
-                "adresa": $("#pruzatelj-adresa").attr("value")
+                "adresa": $("#pruzatelj-adresa").val()
             };
             $.ajax(
                 {
                     url: "rest/pruzatelj/" + oib,
                     type: 'POST',
-                    datatype: "json",
-                    data: json,
+                    contentType: "application/json",
+                    data: JSON.stringify(json),
                     success: function (data, textStatus, xhr) {
                         alert(xhr.status);
 
@@ -46,6 +46,7 @@
         }
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <%--    <script src="/scripts/script.js"></script>--%>
 </head>
 <body>
 <form id="pruzatelj-<c:out value="${pruzatelj.adresa}"/>">
