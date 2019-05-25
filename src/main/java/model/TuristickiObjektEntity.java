@@ -15,6 +15,7 @@ public class TuristickiObjektEntity {
     private long sifraVrsta;
 
     @Id
+    @GeneratedValue
     @Column(name = "sifraObjekt", nullable = false)
     public long getSifraObjekt() {
         return sifraObjekt;

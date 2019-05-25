@@ -9,94 +9,131 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <title>
-        <jsp:useBean id="pruzatelj" scope="request" type="model.repository.PruzateljUsluga"/>
-        <c:out value="${pruzatelj.oib}"/></title>
-    <%--        <script src="scripts/htmlescaping.js"></script>--%>
-    <script>
-        function htmlEscape(str) {
-            return String(str)
-                .replace(/&/g, '&amp;')
-                .replace(/"/g, '&quot;')
-                .replace(/'/g, '&#39;')
-                .replace(/</g, '&lt;')
-                .replace(/>/g, '&gt;');
-        }
+    <jsp:useBean id="pruzatelj" scope="request" type="model.repository.PruzateljUsluga"/>
+    <title><c:out value="${pruzatelj.oib}"/></title>
+    <script src="scripts/htmlescaping.js"></script>
+    <%--        <script>--%>
+    <%--            $().ready(--%>
+    <%--                function () {--%>
+    <%--                    let oib = $("#pruzatelj-oib").val();--%>
+    <%--                    $.ajax({--%>
+    <%--                        url: "rest/objekt/" + oib,--%>
+    <%--                        type: 'GET',--%>
+    <%--                        data: {},--%>
+    <%--                        dataType: "json",--%>
+    <%--                        success: function (data) {--%>
+    <%--                            let objekti = data;--%>
+    <%--                            let html = "<ul>";--%>
+    <%--                            for (let i = 0; i < objekti.length; i++) {--%>
+    <%--                                let o = data[i];--%>
+    <%--                                html += "<form>";--%>
+    <%--                                html += "<input id='objekt-" + o.sifraObjekt + "' type='hidden' name='sifraObjekt' " +--%>
+    <%--                                    "value='" + o.sifraObjekt + "'/>";--%>
+    <%--                                html += "<input id='objekt-" + o.oib + "-oib' type='hidden' name='oib' " +--%>
+    <%--                                    "value='" + o.oib + "'/>";--%>
+    <%--                                html += "<input id='objekt-" + o.sifraObjekt + "-naziv' type='text' value='" + o.naziv + "'/>" +--%>
+    <%--                                    "<label for='objekt-" + o.sifraObjekt + "-naziv'>Naziv</label>";--%>
+    <%--                                html += "</form>";--%>
+    <%--                                html += "<button onclick='azurirajObjekt(\'" + o.sifraObjekt + "\')'>Ažuriraj</button>";--%>
+    <%--                                //todo: html += "<button >Izbriši</button>";--%>
+    <%--                                //todo:vrsta objekta--%>
+    <%--                            }--%>
 
-        function azurirajPruzatelja(oib) {
-            let json = {
-                "oib": oib,
-                "adresa": $("#pruzatelj-adresa").val()
-            };
-            $.ajax(
-                {
-                    url: "rest/pruzatelj/" + oib,
-                    type: 'POST',
-                    contentType: "application/json",
-                    data: JSON.stringify(json),
-                    success: function (data, textStatus, xhr) {
-                        alert(xhr.status);
+    <%--                            html += "</ul>";--%>
+    <%--                            //todo: dodavanje novog objekta--%>
+    <%--                            $("#objekti").html(html);--%>
+    <%--                        }--%>
+    <%--                    });--%>
+    <%--                }--%>
+    <%--            );--%>
 
-                    },
-                    error: function (status) {
-                        alert('Neuspješno ažuriran');
-                    }
-                }
-            )
-        }
+    <%--            function htmlEscape(str) {--%>
+    <%--                return String(str)--%>
+    <%--                    .replace(/&/g, '&amp;')--%>
+    <%--                    .replace(/"/g, '&quot;')--%>
+    <%--                    .replace(/'/g, '&#39;')--%>
+    <%--                    .replace(/</g, '&lt;')--%>
+    <%--                    .replace(/>/g, '&gt;');--%>
+    <%--            }--%>
 
-        function azurirajFizickuOsobu(oib) {
-            let json = {
-                oib: oib,
-                ime: $("#fosoba-" + oib + "-ime").val(),
-                prezime: $("#fosoba-" + oib + "-prezime").val(),
-                datumRodjenja: $("#fosoba-" + oib + "-datumRodjenja").val()
-            };
-            $.ajax(
-                {
-                    url: "rest/fosoba/" + oib,
-                    type: 'POST',
-                    contentType: "application/json",
-                    data: JSON.stringify(json),
-                    success: function (data, textStatus, xhr) {
-                        alert(xhr.status);
-                    },
-                    error: function (status) {
-                        alert('Neuspješno ažuriran');
-                    }
-                }
-            )
-        }
+    <%--            function azurirajPruzatelja(oib) {--%>
+    <%--                let json = {--%>
+    <%--                    "oib": oib,--%>
+    <%--                    "adresa": $("#pruzatelj-adresa").val()--%>
+    <%--                };--%>
+    <%--                $.ajax(--%>
+    <%--                    {--%>
+    <%--                        url: "rest/pruzatelj/" + oib,--%>
+    <%--                        type: 'POST',--%>
+    <%--                        contentType: "application/json",--%>
+    <%--                        data: JSON.stringify(json),--%>
+    <%--                        success: function (data, textStatus, xhr) {--%>
+    <%--                            alert(xhr.status);--%>
 
-        function azurirajPravnuOsobu(oib) {
-            let json = {
-                oib: oib,
-                naziv: $("#posoba-" + oib + "-naziv").val(),
-                datumOsnivanja: $("#posoba-" + oib + "-datumOsnivanja").val(),
-                pocetniKapital: $("#posoba-" + oib + "-pocetniKapital").val()
-            };
-            $.ajax(
-                {
-                    url: "rest/posoba/" + oib,
-                    type: 'POST',
-                    contentType: "application/json",
-                    data: JSON.stringify(json),
-                    success: function (data, textStatus, xhr) {
-                        alert(xhr.status);
-                    },
-                    error: function (status) {
-                        alert('Neuspješno ažuriran');
-                    }
-                }
-            )
-        }
-    </script>
+    <%--                        },--%>
+    <%--                        error: function (status) {--%>
+    <%--                            alert('Neuspješno ažuriran');--%>
+    <%--                        }--%>
+    <%--                    }--%>
+    <%--                )--%>
+    <%--            }--%>
+
+    <%--            function azurirajFizickuOsobu(oib) {--%>
+    <%--                let json = {--%>
+    <%--                    oib: oib,--%>
+    <%--                    ime: $("#fosoba-" + oib + "-ime").val(),--%>
+    <%--                    prezime: $("#fosoba-" + oib + "-prezime").val(),--%>
+    <%--                    datumRodjenja: $("#fosoba-" + oib + "-datumRodjenja").val()--%>
+    <%--                };--%>
+    <%--                $.ajax(--%>
+    <%--                    {--%>
+    <%--                        url: "rest/fosoba/" + oib,--%>
+    <%--                        type: 'POST',--%>
+    <%--                        contentType: "application/json",--%>
+    <%--                        data: JSON.stringify(json),--%>
+    <%--                        success: function (data, textStatus, xhr) {--%>
+    <%--                            alert(xhr.status);--%>
+    <%--                        },--%>
+    <%--                        error: function (status) {--%>
+    <%--                            alert('Neuspješno ažuriran');--%>
+    <%--                        }--%>
+    <%--                    }--%>
+    <%--                )--%>
+    <%--            }--%>
+
+    <%--            function azurirajPravnuOsobu(oib) {--%>
+    <%--                let json = {--%>
+    <%--                    oib: oib,--%>
+    <%--                    naziv: $("#posoba-" + oib + "-naziv").val(),--%>
+    <%--                    datumOsnivanja: $("#posoba-" + oib + "-datumOsnivanja").val(),--%>
+    <%--                    pocetniKapital: $("#posoba-" + oib + "-pocetniKapital").val()--%>
+    <%--                };--%>
+    <%--                $.ajax(--%>
+    <%--                    {--%>
+    <%--                        url: "rest/posoba/" + oib,--%>
+    <%--                        type: 'POST',--%>
+    <%--                        contentType: "application/json",--%>
+    <%--                        data: JSON.stringify(json),--%>
+    <%--                        success: function (data, textStatus, xhr) {--%>
+    <%--                            alert(xhr.status);--%>
+    <%--                        },--%>
+    <%--                        error: function (status) {--%>
+    <%--                            alert('Neuspješno ažuriran');--%>
+    <%--                        }--%>
+    <%--                    }--%>
+    <%--                )--%>
+    <%--            }--%>
+
+    <%--            function azurirajObjekt(sifraObjekt) {--%>
+
+    <%--            }--%>
+    <%--          </script> --%>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <%--    <script src="/scripts/script.js"></script>--%>
+    <script src="scripts/script.js"></script>
 </head>
 <body>
-<form id="pruzatelj-<c:out value="${pruzatelj.adresa}"/>">
-    <input type="hidden" name="oib" value="<c:out value="${pruzatelj.oib}"/>">
+<form>
+    <input id="pruzatelj-oib" type="hidden" name="oib" value="<c:out value="${pruzatelj.oib}"/>">
     <label for="pruzatelj-adresa">Adresa</label>
     <input id="pruzatelj-adresa" type="text" name="adresa" value="<c:out value="${pruzatelj.adresa}"/>">
     <%--    <input type="submit" onsubmit="azurirajPruzatelja('<c:out value="${pruzatelj.oib}"/>')">--%>
@@ -139,5 +176,9 @@
         <button onclick="azurirajPravnuOsobu('<c:out value="${pruzatelj.oib}"/>')">Ažuriraj</button>
     </c:otherwise>
 </c:choose>
+
+<div id="objekti-<c:out value="${pruzatelj.oib}"/>">
+    &nbsp
+</div>
 </body>
 </html>

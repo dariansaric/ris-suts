@@ -13,6 +13,7 @@ public class VrstaObjektEntity {
     private String nazivVrsta;
 
     @Id
+    @GeneratedValue
     @Column(name = "sifraVrsta", nullable = false)
     public long getSifraVrsta() {
         return sifraVrsta;
