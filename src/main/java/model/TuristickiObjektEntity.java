@@ -6,7 +6,8 @@ import java.util.Objects;
 @Entity
 @Table(name = "TuristickiObjekt", schema = "public", catalog = "suts")
 @NamedQueries(value = {
-        @NamedQuery(name = "TuristickiObjekt.dohvatiGoste", query = "select g from GostEntity as g where g.sifraObjekt = :sobj")
+        @NamedQuery(name = "TuristickiObjekt.dohvatiGoste", query = "select g from GostEntity as g where g.sifraObjekt = :sobj"),
+        @NamedQuery(name = "TuristickiObjekt.dohvatiSve", query = "select o from TuristickiObjektEntity as o")
 })
 public class TuristickiObjektEntity {
     private long sifraObjekt;

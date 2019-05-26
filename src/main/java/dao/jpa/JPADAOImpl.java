@@ -10,6 +10,7 @@ import model.repository.TuristickiObjekt;
 
 import javax.persistence.EntityManager;
 import java.util.List;
+import java.util.Optional;
 
 public class JPADAOImpl implements DAO {
     @Override
@@ -132,8 +133,14 @@ public class JPADAOImpl implements DAO {
     @Override
     public boolean pohraniTuristickiObjekt(TuristickiObjekt objekt) {
         try {
+            EntityManager em = JPAEMProvider.getEntityManager();
+            Optional<Long> id = em.createNamedQuery("TuristickiObjekt.dohvatiSve", TuristickiObjektEntity.class)
+                    .getResultList().stream().map(TuristickiObjektEntity::getSifraObjekt).max(Long::compare);
+            long max = id.isPresent() ? id.get() : -1;
+
+            objekt.setSifraObjekt(max + 1);
             TuristickiObjektEntity e = objekt.convertToEntity();
-            JPAEMProvider.getEntityManager().persist(e);
+            em.persist(e);
         } catch (Exception e) {
             return false;
         }

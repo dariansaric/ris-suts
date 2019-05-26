@@ -35,4 +35,8 @@ public class TuristickiObjektService {
     public static boolean azurirajObjekt(TuristickiObjekt o) {
         return DAOProvider.getDAO().azurirajTuristickiObjekt(o);
     }
+
+    public static boolean pohraniObjekt(TuristickiObjekt o) {
+        return DAOProvider.getDAO().pohraniTuristickiObjekt(o);
+    }
 }

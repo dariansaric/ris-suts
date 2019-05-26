@@ -12,6 +12,8 @@ import java.util.List;
 
 @Path("objekt")
 public class TuristickiObjektResource {
+    //todo:dodavanje u frontend
+    //todo:brisanje objekta
     private static final Gson GSON = new Gson();
 
     @Path("/{oib}")
@@ -35,5 +37,18 @@ public class TuristickiObjektResource {
         o.setSifraVrsta(object.getLong("sifraVrsta"));
 
         return Response.status(TuristickiObjektService.azurirajObjekt(o) ? 200 : 304).build();
+    }
+
+    @Path("/create")
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response stvoriObjekt(final String json) {
+        TuristickiObjekt o = new TuristickiObjekt();
+        JSONObject j = new JSONObject(json);
+        o.setOib(j.getString("oib"));
+        o.setNaziv(j.getString("naziv"));
+        o.setSifraVrsta(j.getLong("sifraVrsta"));
+
+        return Response.status(TuristickiObjektService.pohraniObjekt(o) ? 200 : 304).build();
     }
 }
