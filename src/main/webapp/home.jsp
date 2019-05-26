@@ -10,6 +10,8 @@
 <html>
 <head>
     <title>Sustav za upravljanje turističkim smještajem</title>
+    <script src="${pageContext.request.contextPath}/scripts/home.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
 <h1>Pregled pružatelja po šiframa</h1>

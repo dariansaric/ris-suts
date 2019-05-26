@@ -16,6 +16,7 @@ import java.sql.Date;
 
 @Path("/pruzatelj")
 public class PruzateljUslugaResource {
+    //todo:nece da doda entitete :(
     private static final Gson GSON = new Gson();
 
     @Path("/{oib}")

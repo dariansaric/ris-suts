@@ -26,7 +26,6 @@ function dodajPruzatelja() {
             prezime: $("#fosoba-prezime").val(),
             datumRodjenja: $("#fosoba-datumRodjenja").val()
         };
-
     } else {
         json = {
             oib: $("#novi-pruzatelj-oib").val(),
@@ -39,11 +38,13 @@ function dodajPruzatelja() {
 
     $.ajax({
         url: "/suts/rest/pruzatelj/create",
+        type: 'POST',
         data: JSON.stringify(json),
         contentType: "application/json",
-        dataType: json,
+        dataType: "json",
         success: function () {
-            url = "http://localhost:8080/suts/home/" + json.oib;
+            // url = "http://localhost:8080/suts/home/" + json.oib;
+
         }
-    })
+    });
 }
