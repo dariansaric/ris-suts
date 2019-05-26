@@ -13,7 +13,6 @@ import java.util.List;
 @Path("objekt")
 public class TuristickiObjektResource {
     //todo:dodavanje u frontend
-    //todo:brisanje objekta
     private static final Gson GSON = new Gson();
 
     @Path("/{oib}")
@@ -50,5 +49,11 @@ public class TuristickiObjektResource {
         o.setSifraVrsta(j.getLong("sifraVrsta"));
 
         return Response.status(TuristickiObjektService.pohraniObjekt(o) ? 200 : 304).build();
+    }
+
+    @Path("/delete/{sifra}")
+    @DELETE
+    public Response ukloniObjekt(@PathParam("sifra") final long sifraObjekt) {
+        return Response.status(TuristickiObjektService.izbrisiObjekt(sifraObjekt) ? 200 : 302).build();
     }
 }

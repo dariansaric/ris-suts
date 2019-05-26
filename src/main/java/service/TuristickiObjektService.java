@@ -39,4 +39,8 @@ public class TuristickiObjektService {
     public static boolean pohraniObjekt(TuristickiObjekt o) {
         return DAOProvider.getDAO().pohraniTuristickiObjekt(o);
     }
+
+    public static boolean izbrisiObjekt(long sifraObjekt) {
+        return DAOProvider.getDAO().izbrisiTuristickiObjekt(sifraObjekt);
+    }
 }

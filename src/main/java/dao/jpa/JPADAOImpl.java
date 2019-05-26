@@ -160,6 +160,18 @@ public class JPADAOImpl implements DAO {
     }
 
     @Override
+    public boolean izbrisiTuristickiObjekt(long sifraObjekt) {
+        EntityManager em = JPAEMProvider.getEntityManager();
+        TuristickiObjektEntity e = em.find(TuristickiObjektEntity.class, sifraObjekt);
+        if (e == null) {
+            return false;
+        }
+        em.remove(e);
+
+        return true;
+    }
+
+    @Override
     public List<GostEntity> dohvatiGoste(long sifraObjekt) {
         return JPAEMProvider.getEntityManager()
                 .createNamedQuery("TuristickiObjekt.dohvatiGoste", GostEntity.class)

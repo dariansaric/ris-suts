@@ -15,7 +15,7 @@ import java.util.List;
  * @author marcupic
  */
 public interface DAO {
-//    String TFS_QUERY =
+    //    String TFS_QUERY =
 //            "select title," +
 //                    "   ts_headline('english', title || '\n' || summary || '\n' || categories || '\n' || description, " +
 //                    "   to_tsquery(:q)) as headline, rank" +
@@ -49,8 +49,11 @@ public interface DAO {
 //
 //    List<Util.PivotResult> getAnalysisResultsForHours(Date start, Date end) throws DAOException;
     List<PruzateljUslugaEntity> dohvatiPruzatelje();
+
     boolean pohraniPruzatelja(PruzateljUsluga pruzateljUsluga);
+
     boolean azurirajPruzatelja(PruzateljUsluga pruzateljUsluga);
+
     PruzateljUslugaEntity dohvatiPruzatelja(String oib);
 
     FizickaOsobaEntity dohvatiFizickuOsobu(String oib);
@@ -58,18 +61,23 @@ public interface DAO {
     boolean pohraniFizickuOsobu(FizickaOsoba fizickaOsoba);
 
     boolean azurirajFizickuOsobu(FizickaOsoba fizickaOsoba);
+
     PravnaOsobaEntity dohvatiPravnuOsobu(String oib);
 
     boolean pohraniPravnuOsobu(PravnaOsoba pravnaOsoba);
 
     boolean azurirajPravnuOsobu(PravnaOsoba pravnaOsoba);
+
     List<TuristickiObjektEntity> dohvatiSveObjekte(String oib);
+
     TuristickiObjektEntity dohvatiTuristickiObjekt(long sifraObjekt);
 
     boolean pohraniTuristickiObjekt(TuristickiObjekt objekt);
 
     boolean azurirajTuristickiObjekt(TuristickiObjekt objekt);
-//    RegistracijaObjektEntity dohvatiRegistracijuObjekt(long sifraObjekt);
+
+    boolean izbrisiTuristickiObjekt(long sifraObjekt);
+
     List<GostEntity> dohvatiGoste(long sifraObjekt);
 
     List<VrstaObjektEntity> dohvatiVrste();
