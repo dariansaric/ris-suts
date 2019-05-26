@@ -169,7 +169,7 @@
             <input id="posoba-<c:out value="${pruzatelj.oib}-pocetniKapital"/>" type="number"
                    value="<c:out value="${posoba.pocetniKapital}"/>">
             <label for="posoba-<c:out value="${pruzatelj.oib}-pocetniKapital"/>">Početni kapital</label>
-            <input id="posoba-<c:out value="${pruzatelj.oib}-datumOsnivanja"/>"
+            <input id="posoba-<c:out value="${pruzatelj.oib}-datumOsnivanja"/>" type="date"
                    value="<c:out value="${posoba.datumOsnivanja}"/>">
             <label for="posoba-<c:out value="${pruzatelj.oib}-datumOsnivanja"/>">Datum osnivanja</label>
         </form>
@@ -180,5 +180,14 @@
 <div id="objekti-<c:out value="${pruzatelj.oib}"/>">
     &nbsp
 </div>
+<form>
+    <input type="hidden" name="oib" value="<c:out value="${pruzatelj.oib}"/>">
+    <label for="novi-objekt-naziv">Naziv</label>
+    <input id="novi-objekt-naziv" placeholder="naziv" type="text">
+    <div id="novi-objekt-vrsta-div">
+        &nbsp;
+    </div>
+</form>
+<button onclick="dodajObjekt('<c:out value="${pruzatelj.oib}"/>')">Dodaj novi objekt</button>
 </body>
 </html>

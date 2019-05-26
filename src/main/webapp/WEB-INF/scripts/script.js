@@ -125,8 +125,9 @@ function dohvatiObjekte() {
                 html += "</form>";
                 let s = "azurirajObjekt(" + o.sifraObjekt + ")";
                 html += "<button onclick=\"" + s + "\">Ažuriraj</button></li>";
+                s = "izbrisiObjekt(" + o.sifraObjekt + ")";
+                html += "<button onclick=\"" + s + "\">Izbriši</button>";
                 //todo: html += "<button >Izbriši</button>";
-                //todo:vrsta objekta
             }
 
             html += "</ul>";
@@ -144,6 +145,49 @@ function dohvatiVrste() {
         dataType: "json",
         success: function (data) {
             vrste = data;
+            let html = "<label for='novi-objekt-vrsta'>Vrsta objekta</label><select id='novi-objekt-vrsta'>";
+            for (let i = 0; i < vrste.length; i++) {
+                html += "<option value='" + vrste[i].sifraVrsta + "'>" + vrste[i].nazivVrsta + "</option>";
+            }
+
+            html += "</select>";
+            $("#novi-objekt-vrsta-div").html(html);
         }
     });
+}
+
+function dodajObjekt(oib) {
+    let json = {
+        oib: oib,
+        naziv: $("#novi-objekt-naziv").val(),
+        sifraVrsta: $("#novi-objekt-vrsta").val()
+    };
+
+    $.ajax({
+        url: "rest/objekt/create",
+        data: JSON.stringify(json),
+        type: 'POST',
+        contentType: "application/json",
+        success: function (data, textStatus, xhr) {
+            alert(xhr.status);
+            dohvatiObjekte();
+            $("#novi-objekt-naziv").val("");
+
+        },
+        error: function (status) {
+            alert(status);
+        }
+    })
+}
+
+function izbrisiObjekt(sifraObjekt) {
+    $.ajax({
+        url: "rest/objekt/delete/" + sifraObjekt,
+        type: 'DELETE',
+        data: {},
+        success: function (dat, textStatus, xhr) {
+            alert(xhr.status);
+            dohvatiObjekte();
+        }
+    })
 }
