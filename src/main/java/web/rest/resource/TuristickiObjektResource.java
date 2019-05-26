@@ -12,7 +12,6 @@ import java.util.List;
 
 @Path("objekt")
 public class TuristickiObjektResource {
-    //todo:dodavanje u frontend
     private static final Gson GSON = new Gson();
 
     @Path("/{oib}")

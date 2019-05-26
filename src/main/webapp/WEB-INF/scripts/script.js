@@ -11,7 +11,7 @@ function azurirajPruzatelja(oib) {
     };
     $.ajax(
         {
-            url: "rest/pruzatelj/" + oib,
+            url: "/suts/rest/pruzatelj/" + oib,
             type: 'POST',
             contentType: "application/json",
             data: JSON.stringify(json),
@@ -35,7 +35,7 @@ function azurirajFizickuOsobu(oib) {
     };
     $.ajax(
         {
-            url: "rest/fosoba/" + oib,
+            url: "/suts/rest/fosoba/" + oib,
             type: 'POST',
             contentType: "application/json",
             data: JSON.stringify(json),
@@ -58,7 +58,7 @@ function azurirajPravnuOsobu(oib) {
     };
     $.ajax(
         {
-            url: "rest/posoba/" + oib,
+            url: "/suts/rest/posoba/" + oib,
             type: 'POST',
             contentType: "application/json",
             data: JSON.stringify(json),
@@ -81,7 +81,7 @@ function azurirajObjekt(sifraObjekt) {
     };
 
     $.ajax({
-        url: "rest/objekt/update",
+        url: "suts/rest/objekt/update",
         type: 'POST',
         contentType: "application/json",
         data: JSON.stringify(json),
@@ -97,7 +97,7 @@ function azurirajObjekt(sifraObjekt) {
 function dohvatiObjekte() {
     let oib = $("#pruzatelj-oib").val();
     $.ajax({
-        url: "rest/objekt/" + oib,
+        url: "/suts/rest/objekt/" + oib,
         type: 'GET',
         data: {},
         dataType: "json",
@@ -127,11 +127,9 @@ function dohvatiObjekte() {
                 html += "<button onclick=\"" + s + "\">Ažuriraj</button></li>";
                 s = "izbrisiObjekt(" + o.sifraObjekt + ")";
                 html += "<button onclick=\"" + s + "\">Izbriši</button>";
-                //todo: html += "<button >Izbriši</button>";
             }
 
             html += "</ul>";
-            //todo: dodavanje novog objekta
             $("#objekti-" + oib).html(html);
         }
     });
@@ -139,7 +137,7 @@ function dohvatiObjekte() {
 
 function dohvatiVrste() {
     $.ajax({
-        url: "rest/vrsta",
+        url: "/suts/rest/vrsta",
         type: "GET",
         data: {},
         dataType: "json",
@@ -164,7 +162,7 @@ function dodajObjekt(oib) {
     };
 
     $.ajax({
-        url: "rest/objekt/create",
+        url: "/suts/rest/objekt/create",
         data: JSON.stringify(json),
         type: 'POST',
         contentType: "application/json",
@@ -182,7 +180,7 @@ function dodajObjekt(oib) {
 
 function izbrisiObjekt(sifraObjekt) {
     $.ajax({
-        url: "rest/objekt/delete/" + sifraObjekt,
+        url: "/suts/rest/objekt/delete/" + sifraObjekt,
         type: 'DELETE',
         data: {},
         success: function (dat, textStatus, xhr) {
