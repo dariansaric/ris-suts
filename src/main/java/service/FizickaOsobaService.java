@@ -22,5 +22,8 @@ public class FizickaOsobaService {
     public static boolean azuzirajFizickuOsobu(FizickaOsoba o) {
         return DAOProvider.getDAO().azurirajFizickuOsobu(o);
     }
-    //todo: stvaranje osobe
+
+    public static boolean pohraniFizickuOsobu(FizickaOsoba o) {
+        return DAOProvider.getDAO().pohraniFizickuOsobu(o);
+    }
 }

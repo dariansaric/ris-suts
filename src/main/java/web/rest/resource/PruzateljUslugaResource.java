@@ -1,13 +1,18 @@
 package web.rest.resource;
 
 import com.google.gson.Gson;
+import model.repository.FizickaOsoba;
+import model.repository.PravnaOsoba;
 import model.repository.PruzateljUsluga;
 import org.json.JSONObject;
+import service.FizickaOsobaService;
+import service.PravnaOsobaService;
 import service.PruzateljUslugaService;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.sql.Date;
 
 @Path("/pruzatelj")
 public class PruzateljUslugaResource {
@@ -38,5 +43,30 @@ public class PruzateljUslugaResource {
         return Response.status(PruzateljUslugaService.azurirajPruzatelja(p) ? 200 : 304).build();
     }
 
-//todo:stvaranje pruzatelja
+    @Path("/create")
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response dodajPruzatelja(final String json) {
+        PruzateljUsluga p = new PruzateljUsluga();
+        JSONObject o = new JSONObject(json);
+        p.setOib(o.getString("oib"));
+        p.setAdresa(o.getString("adresa"));
+
+        if (PruzateljUslugaService.pohraniPruzatelja(p)) {
+            if (o.has("ime")) {
+                FizickaOsoba f = new FizickaOsoba();
+                f.setIme(o.getString("ime"));
+                f.setPrezime(o.getString("prezime"));
+                f.setDatumRodjenja(Date.valueOf(o.getString("datumRodjenja")));
+                return Response.status(FizickaOsobaService.pohraniFizickuOsobu(f) ? 200 : 302).build();
+            } else {
+                PravnaOsoba r = new PravnaOsoba();
+                r.setNaziv(o.getString("naziv"));
+                r.setDatumOsnivanja(Date.valueOf(o.getString("datumOsnivanja")));
+                r.setPocetniKapital(o.getDouble("pocetniKapital"));
+                return Response.status(PravnaOsobaService.pohraniPravnuOsobu(r) ? 200 : 302).build();
+            }
+        }
+        return null;
+    }
 }

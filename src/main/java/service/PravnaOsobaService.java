@@ -22,4 +22,8 @@ public class PravnaOsobaService {
     public static boolean azuzirajPravnuOsobu(PravnaOsoba o) {
         return DAOProvider.getDAO().azurirajPravnuOsobu(o);
     }
+
+    public static boolean pohraniPravnuOsobu(PravnaOsoba o) {
+        return DAOProvider.getDAO().pohraniPravnuOsobu(o);
+    }
 }
