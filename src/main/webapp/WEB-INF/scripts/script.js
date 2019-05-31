@@ -72,7 +72,7 @@ function azurirajPravnuOsobu(oib) {
     )
 }
 
-function azurirajObjekt(sifraObjekt) {
+function azurirajObjekt(sifraObjekt, oib) {
     let json = {
         sifraObjekt: sifraObjekt,
         oib: $("#objekt-" + sifraObjekt + "-oib").val(),
@@ -103,17 +103,18 @@ function dohvatiObjekte() {
         dataType: "json",
         success: function (data) {
             let objekti = data;
-            let html = "<ul>";
+            let html = "<table>";
+            html += "<tr><th>Naziv objekta</th><th>Vrsta objekta</th></tr>";
             for (let i = 0; i < objekti.length; i++) {
                 let o = data[i];
-                html += "<li><form>";
-                html += "<input id='objekt-" + o.sifraObjekt + "' type='hidden' name='sifraObjekt' " +
-                    "value='" + o.sifraObjekt + "'/>";
-                html += "<input id='objekt-" + o.sifraObjekt + "-oib' type='hidden' name='oib' " +
-                    "value='" + o.oib + "'/>";
-                html += "<input id='objekt-" + o.sifraObjekt + "-naziv' type='text' value='" + o.naziv + "'/>" +
-                    "<label for='objekt-" + o.sifraObjekt + "-naziv'>Naziv</label>";
-                html += "<select id='objekt-" + o.sifraObjekt + "-vrsta'>";
+                html += "<tr>";
+                // html += "<td><input id='objekt-" + o.sifraObjekt + "' type='hidden' name='sifraObjekt' " +
+                //     "value='" + o.sifraObjekt + "'/></td>";
+                // html += "<td><input id='objekt-" + o.sifraObjekt + "-oib' type='hidden' name='oib' " +
+                //     "value='" + o.oib + "'/></td>";
+                html += "<td><input id='objekt-" + o.sifraObjekt + "-naziv' type='text' value='" + o.naziv + "'/></td>";
+                // "<label for='objekt-" + o.sifraObjekt + "-naziv'>Naziv</label>";
+                html += "<td><select id='objekt-" + o.sifraObjekt + "-vrsta'>";
                 for (let j = 0; j < vrste.length; j++) {
                     if (vrste[j].sifraVrsta === o.sifraVrsta) {
                         html += "<option value='" + vrste[j].sifraVrsta + "' selected>" + vrste[j].nazivVrsta + "</option>";
@@ -121,15 +122,22 @@ function dohvatiObjekte() {
                         html += "<option value='" + vrste[j].sifraVrsta + "'>" + vrste[j].nazivVrsta + "</option>";
                     }
                 }
-                html += "</select>";
-                html += "</form>";
-                let s = "azurirajObjekt(" + o.sifraObjekt + ")";
-                html += "<button onclick=\"" + s + "\">Ažuriraj</button></li>";
+                html += "</select></td>";
+                let s = "azurirajObjekt(" + o.sifraObjekt + ", '" + o.oib + "')";
+                html += "<td><button onclick=\"" + s + "\">Ažuriraj</button>";
                 s = "izbrisiObjekt(" + o.sifraObjekt + ")";
-                html += "<button onclick=\"" + s + "\">Izbriši</button>";
+                html += "<button onclick=\"" + s + "\">Izbriši</button></td></tr>";
             }
 
-            html += "</ul>";
+            html += "<tr>" +
+                "<td><input id=\"novi-objekt-naziv\" placeholder=\"naziv\" type=\"text\"></td>" +
+                "<td><select id='novi-objekt-vrsta'>";
+            for (let j = 0; j < vrste.length; j++) {
+                html += "<option value='" + vrste[j].sifraVrsta + "'>" + vrste[j].nazivVrsta + "</option>";
+            }
+            let s = "dodajObjekt('" + oib + "')";
+            html += "</td><td><button onclick=\"" + s + "\">Dodaj novi objekt</button>";
+            html += "</td></tr></table>";
             $("#objekti-" + oib).html(html);
         }
     });
